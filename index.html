@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery CSS & Events</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Experiment 2: jQuery CSS & Events</h1>
+
+    <!-- Part 1: Add Class -->
+    <h2>Add a class to an element</h2>
+    <p id="para">This paragraph will change class when you click the button.</p>
+    <button id="btn-add-class">Add .highlight</button>
+
+    <!-- Part 2: Show Position -->
+    <h2>Get element position</h2>
+    <p id="pos-box">Position me</p>
+    <button id="btn-show-pos">Show position</button>
+    <p id="pos-result"></p>
+
+    <!-- Part 3: Animate -->
+    <h2>Animate multiple CSS properties</h2>
+    <div id="anim-box">Animate me</div>
+    <button id="btn-animate">Animate</button>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Add class
+      $("#btn-add-class").click(function () {
+        $("#para").addClass("highlight");
+      });
+
+      // Show position
+      $("#btn-show-pos").click(function () {
+        var pos = $("#pos-box").position();
+        var off = $("#pos-box").offset();
+        $("#pos-result").text("Position: top=" + pos.top + ", left=" + pos.left +
+                              " | Offset: top=" + off.top + ", left=" + off.left);
+      });
+
+      // Animate
+      $("#btn-animate").click(function () {
+        $("#anim-box").animate({
+          padding: "30px",
+          height: "150px"
+        }, 1000, function () {
+          $(this).addClass("anim-done");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
